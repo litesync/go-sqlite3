@@ -7,7 +7,7 @@ go-sqlite3
 [![codecov](https://codecov.io/gh/mattn/go-sqlite3/branch/master/graph/badge.svg)](https://codecov.io/gh/mattn/go-sqlite3)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mattn/go-sqlite3)](https://goreportcard.com/report/github.com/mattn/go-sqlite3)
 
-Latest stable version is v1.14 or later.
+Latest version is v2.0.0
 
 # Description
 
