@@ -242,12 +242,6 @@ To compile under linux use the build tag `linux`.
 go build -tags "linux"
 ```
 
-If you wish to link directly to libsqlite3 then you can use the `libsqlite3` build tag.
-
-```
-go build -tags "libsqlite3 linux"
-```
-
 ### Alpine
 
 When building in an `alpine` container  run the following command before building:
@@ -296,15 +290,6 @@ To compile for macOS on ARM chips:
 
 ```bash
 go build -tags "darwin arm64"
-```
-
-If you wish to link directly to libsqlite3, use the `libsqlite3` build tag:
-
-```
-# x86 
-go build -tags "libsqlite3 darwin amd64"
-# ARM
-go build -tags "libsqlite3 darwin arm64"
 ```
 
 Additional information:
