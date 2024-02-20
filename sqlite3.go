@@ -1709,11 +1709,11 @@ func (d *SQLiteDriver) Open(dsn string) (driver.Conn, error) {
 	}
 
 	// Locking Mode
-	// Because the default is NORMAL and this is not changed in this package
-	// by using the compile time SQLITE_DEFAULT_LOCKING_MODE this PRAGMA can always be executed
-	if err := exec(fmt.Sprintf("PRAGMA locking_mode = %s;", lockingMode)); err != nil {
-		C.sqlite3_close_v2(db)
-		return nil, err
+	if lockingMode != "NORMAL" {
+		if err := exec(fmt.Sprintf("PRAGMA locking_mode = %s;", lockingMode)); err != nil {
+			C.sqlite3_close_v2(db)
+			return nil, err
+		}
 	}
 
 	// Query Only
@@ -1745,11 +1745,11 @@ func (d *SQLiteDriver) Open(dsn string) (driver.Conn, error) {
 	}
 
 	// Synchronous Mode
-	//
-	// Because default is NORMAL this statement is always executed
-	if err := exec(fmt.Sprintf("PRAGMA synchronous = %s;", synchronousMode)); err != nil {
-		conn.Close()
-		return nil, err
+	if synchronousMode != "NORMAL" {
+		if err := exec(fmt.Sprintf("PRAGMA synchronous = %s;", synchronousMode)); err != nil {
+			conn.Close()
+			return nil, err
+		}
 	}
 
 	// Writable Schema
